@@ -1,43 +1,29 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import Number from './components/Number';
-import logo from './logo.svg';
+import Home from './Pages/Home'
+import NumberFinder from './Pages/NumberFinder';
+import About from './Pages/About';
+import Contact from './Pages/Contact';
+import Header from './components/Header';
 import './App.css';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import ErrorPage from './ErrorPage';
 
 function App() {
 
-  const [numbers, setNumbers] = React.useState(allNewNumbers())
-  const numberElements = numbers.map(number => <Number value={number} key={number.id}/>)
-
-  function allNewNumbers() {
-    const newNumbers = [];
-    for (let i = 0; i < 6; i++) {
-      newNumbers.push(generateNewNumber())
-    }
-    return newNumbers
-  }
-
-  function generateNewNumber() {
-    return {
-      value: 0,
-      id: nanoid()
-    }
-  }
-
-  function handleClick() {
-    console.log("solve problem")
-  }
-
   return (
-    <div className="App">
-      <h1>Number finder</h1>
-      <hr/>
-      <h2>Numbers</h2>
-      {numberElements}
-      <h2>Target</h2>
-      <input type="text"/>
-      <button onClick={handleClick}>Solve</button>
-    </div>
+    <BrowserRouter>
+      <Header/>
+
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/numberfinder' element={<NumberFinder/>}/>
+        <Route path='/about' element={<About/>}/>
+        <Route path='/contact' element={<Contact/>}/>
+        <Route path='*' element={<ErrorPage/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
