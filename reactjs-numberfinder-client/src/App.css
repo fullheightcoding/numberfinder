@@ -45,18 +45,7 @@
   }
 }
 
-.numbers {
-  /* display: grid;
-  gap: 20px;
-  grid-template-rows: repeat(6, 1fr);
-  grid-template-columns: repeat(2, 1fr); */
-}
-
-.number {
-  height: 20px;
-  /* width: 100px; */
-}
-
-a {
+.nav-item {
+  padding: 5px;
   text-decoration: none;
 }
